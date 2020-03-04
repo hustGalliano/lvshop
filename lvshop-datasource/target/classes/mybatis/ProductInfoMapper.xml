@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lvshop.datasource.mapper.ProductInfoMapper">
+
+	<insert id="saveProductInfo" parameterType="com.lvshop.common.pojo.ProductInfo">
+		INSERT INTO tb_product_info
+		VALUES (#{id},#{name},#{price},#{pictureList},#{specification},#{service},#{color},#{size},#{shopId},#{modifiedTime});
+	</insert>
+
+	<delete id="removeProductInfoById" parameterType="java.lang.Long">
+		DELETE FROM tb_product_info WHERE id = #{productId};
+	</delete>
+
+	<update id="updateProductInfo" parameterType="com.lvshop.common.pojo.ProductInfo">
+		UPDATE tb_product_info SET name=#{name}, price=#{price}, picture_list=#{pictureList}, specification=#{specification}, service=#{service}, color=#{color}, size=#{size}, shop_id=#{shopId}, modified_time=#{modifiedTime}
+		WHERE id = #{id};
+	</update>
+
+	<select id="findProductInfoById" resultType="com.lvshop.common.pojo.ProductInfo">
+		SELECT id, name, price, picture_list AS pictureList, specification, service, color, size, shop_id AS shopId, modified_time AS modifiedTime
+		FROM tb_product_info
+		WHERE id = #{productId};
+  	</select>
+
+</mapper>
