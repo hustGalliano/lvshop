@@ -1,0 +1,36 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+	<dubbo:application name="lvshop-datasource"></dubbo:application>
+	<dubbo:registry protocol="zookeeper" address="hang1:2181"></dubbo:registry>
+	<dubbo:protocol name="dubbo" port="20880"></dubbo:protocol>
+	
+	&lt;!&ndash; 暴露服务   ref：指向服务的真正的实现对象 &ndash;&gt;
+	<dubbo:service id="productInfoService" interface="com.lvshop.common.service.ProductInfoService"
+		ref="productInfoServiceImpl" timeout="1000" version="1.0.0">
+		<dubbo:method name="saveProductInfo" timeout="1000"></dubbo:method>
+		<dubbo:method name="removeProductInfoById" timeout="1000"></dubbo:method>
+		<dubbo:method name="updateProductInfo" timeout="1000"></dubbo:method>
+		<dubbo:method name="findProductInfoById" timeout="1000"></dubbo:method>
+	</dubbo:service>
+	&lt;!&ndash; 服务的实现 &ndash;&gt;
+	<bean id="productInfoServiceImpl" class="com.lvshop.datasource.service.impl.ProductInfoServiceImpl"></bean>
+
+
+	&lt;!&ndash;统一设置服务提供方的规则  &ndash;&gt;
+	<dubbo:provider timeout="1000"></dubbo:provider>
+	&lt;!&ndash; 连接监控中心 &ndash;&gt;
+	<dubbo:monitor protocol="registry"></dubbo:monitor>
+
+
+</beans>
+
+
+-->
