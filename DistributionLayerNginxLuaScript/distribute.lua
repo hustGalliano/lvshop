@@ -10,11 +10,12 @@ local hot_product_key = "hot_product_"..productId
 local cache_ngx = ngx.shared.my_cache
 local hot_product_flag = cache_ngx:get(hot_product_key)
 
+-- 若是热点数据，则采用随机负载均衡，防止发生缓存热点现象
 if hot_product_flag == "true" then
   math.randomseed(tostring(os.time()):reverse():sub(1, 7))
   local index = math.random(1, 2)  
   backend = "http://"..hosts[index]
-else
+else -- 若不是热点数据，则按普通数据，用 hash 分发策略
   local hash = ngx.crc32_long(productId)
   local index = (hash % 2) + 1
   backend = "http://"..hosts[index]

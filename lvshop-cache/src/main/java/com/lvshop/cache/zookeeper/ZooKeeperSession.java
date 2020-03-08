@@ -166,7 +166,19 @@ public class ZooKeeperSession {
 		return "";
 	}
 
-
+	/**
+	 * 判断节点是否存在
+	 * @param path
+	 */
+	public boolean existNode(String path) {
+		try {
+			Stat exists = zookeeper.exists(path, false);
+			return exists != null;
+		} catch (KeeperException | InterruptedException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 
 

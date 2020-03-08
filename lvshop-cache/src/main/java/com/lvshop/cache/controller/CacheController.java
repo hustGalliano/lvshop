@@ -49,16 +49,20 @@ public class CacheController {
 //	public ProductInfo testGetCache(Long id) {
 //		return cacheService.getLocalCache(id);
 //	}
-	
+
+	@RequestMapping("/prewarmCache")
+	public void prewarmCache() {
+		new Thread(new CachePrewarmThread(), "CachePrewarmThread").start();
+	}
+
+
 	@RequestMapping("/getProductInfo")
 	public ProductInfo getProductInfo(Long productId) {
 		ProductInfo productInfo = cacheService.getProductInfoFromRedisCache(productId);
 
 		if(productInfo != null) {
-			LOGGER.info("[ 从Redis中获取缓存 ] productInfo = {}", productInfo);
-		}
-		
-		if(productInfo == null) {
+			LOGGER.info("[ 从Redis中获取数据 ] productInfo = {}", productInfo);
+		} else {
 			LOGGER.info("[ Redis缓存中无此数据 ] productId = {}", productId);
 
 			productInfo = cacheService.getProductInfoFromLocalCache(productId);
@@ -111,13 +115,6 @@ public class CacheController {
 		}
 		return shopInfo;
 	}
-	
-	@RequestMapping("/prewarmCache")
-	public void prewarmCache() {
-		new CachePrewarmThread().start();
-	}
-
-
 
 
 	@HystrixCommand(fallbackMethod = "getProductInfoCommandFallback",

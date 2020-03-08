@@ -20,8 +20,8 @@ public class InitListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent sce) {
 
 		// 开启ProductInfo和ShopInfo的缓存重建线程
-		new Thread(new RebuildProductInfoCacheThread()).start();
-		new Thread(new RebuildShopInfoCacheThread()).start();
+		new Thread(new RebuildProductInfoCacheThread(), "RebuildProductInfoCacheThread").start();
+		new Thread(new RebuildShopInfoCacheThread(), "RebuildShopInfoCacheThread").start();
 
 		// 初始化 ZK 实例
 		ZooKeeperSession.init();

@@ -2,12 +2,9 @@ package com.lvshop.storm.zk;
 
 import java.util.concurrent.CountDownLatch;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.*;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
-import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,9 +15,9 @@ import org.slf4j.LoggerFactory;
  */
 public class ZooKeeperSession {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ZooKeeperSession.class);
-	
+
 	private static CountDownLatch connectedSemaphore = new CountDownLatch(1);
-	
+
 	private ZooKeeper zookeeper;
 
 	public ZooKeeperSession() {
@@ -53,56 +50,43 @@ public class ZooKeeperSession {
 	/**
 	 * 获取分布式锁
 	 */
-	public void acquireDistributedLock() {
-		String path = "/taskid-list-lock";
-	
+	public void acquireDistributedLock(String path) {
+//		String path = "/taskid-list-lock";
 		try {
-			zookeeper.create(path, "".getBytes(), 
+			zookeeper.create(path, "".getBytes(),
 					Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
-			LOGGER.info("[ 获取分布式锁 taskid-list-lock ]");
+			LOGGER.info("[ 获取分布式锁 {}]", path);
 		} catch (Exception e) {
 			// 如果那个商品对应的锁的node已经存在了，就是已经被别人加锁了，那么就会报错:NodeExistsException
-			int count = 0;
+			int count = 1;
 			while(true) {
 				try {
-					Thread.sleep(1000); 
-					zookeeper.create(path, "".getBytes(), 
+					Thread.sleep(1000);
+					zookeeper.create(path, "".getBytes(),
 							Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL);
 				} catch (Exception e2) {
+					LOGGER.info("[ 第 {} 次重试获取分布式锁 {} 失败 ......]", count, path);
 					count++;
-					LOGGER.info("[ 第 {} 次尝试获取分布式锁 taskid-list-lock ......]", count);
 					continue;
 				}
-				LOGGER.info("[ 尝试 {} 次后，成功获取分布式锁 taskid-list-lock ]", count);
+				LOGGER.info("[ 重试 {} 次后，成功获取分布式锁 {} ]", count, path);
 				break;
 			}
 		}
 	}
-	
+
 	/**
 	 * 释放分布式锁
 	 */
-	public void releaseDistributedLock() {
-		String path = "/taskid-list-lock";
+	public void releaseDistributedLock(String path) {
+//		String path = "/taskid-list-lock";
 		try {
 			zookeeper.delete(path, -1);
-			LOGGER.info("[ 释分布式锁 taskid-list-lock ...... ]");
+			LOGGER.info("[ 释分布式锁 {} ... ]", path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
-	// 获取节点"/taskid-list"的数据
-	public String getNodeData() {
-		try {
-			return new String(zookeeper.getData("/taskid-list", false, new Stat()));  
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "";
-	}
-
-
 
 
 	// =========== 创建、删除、设置、获取节点 ===========
@@ -143,6 +127,7 @@ public class ZooKeeperSession {
 			LOGGER.info("[ 设置节点数据成功 ] path = {}, date = {}", path, data);
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
 	}
 
@@ -158,7 +143,22 @@ public class ZooKeeperSession {
 		}
 		return "";
 	}
-	
+
+	/**
+	 * 判断节点是否存在
+	 * @param path
+	 */
+	public boolean existNode(String path) {
+		try {
+			Stat exists = zookeeper.exists(path, false);
+			return exists != null;
+		} catch (KeeperException | InterruptedException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
 	/**
 	 * 建立zk session 的 watcher
 	 * @author Administrator
@@ -170,7 +170,7 @@ public class ZooKeeperSession {
 			LOGGER.info("[ 接收到监听事件: {} ]", event.getState());
 			if(KeeperState.SyncConnected == event.getState()) {
 				connectedSemaphore.countDown(); // 就是减1
-			} 
+			}
 		}
 	}
 
@@ -198,5 +198,5 @@ public class ZooKeeperSession {
 	public static void init() {
 		getInstance();
 	}
-	
+
 }

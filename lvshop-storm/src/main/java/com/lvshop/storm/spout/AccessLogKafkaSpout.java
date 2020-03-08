@@ -53,6 +53,7 @@ public class AccessLogKafkaSpout extends BaseRichSpout {
 		
 		ConsumerConnector consumerConnector = Consumer.
 				createJavaConsumerConnector(consumerConfig);
+
 		String topic = "access-log";
 		
 		Map<String, Integer> topicCountMap = new HashMap<>();

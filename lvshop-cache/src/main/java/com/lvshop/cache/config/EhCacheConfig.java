@@ -13,7 +13,7 @@ import org.springframework.core.io.ClassPathResource;
  */
 @Configuration
 @EnableCaching
-public class CacheConfig {
+public class EhCacheConfig {
 
 	@Bean
 	public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {

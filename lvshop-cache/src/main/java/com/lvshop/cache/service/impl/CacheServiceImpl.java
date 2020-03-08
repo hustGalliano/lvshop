@@ -94,7 +94,7 @@ public class CacheServiceImpl implements CacheService {
 	 * Redis相关
 	 */
 	// 将ProductInfo保存到Redis中
-	@HystrixCommand(fallbackMethod = "saveProductInfo2ReidsCacheFallback",
+	@HystrixCommand(fallbackMethod = "saveProductInfo2RedisCacheFallback",
 			groupKey = "RedisGroup",
 			commandProperties = {
 					@HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_THREAD_TIMEOUT_IN_MILLISECONDS, value = "100"),
@@ -136,7 +136,7 @@ public class CacheServiceImpl implements CacheService {
 	}
 
 	// 将ShopInfo保存到Redis中
-	@HystrixCommand(fallbackMethod = "saveShopInfo2ReidsCacheFallback",
+	@HystrixCommand(fallbackMethod = "saveShopInfo2RedisCacheFallback",
 			groupKey = "RedisGroup",
 			commandProperties = {
 					@HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_THREAD_TIMEOUT_IN_MILLISECONDS, value = "100"),
@@ -199,13 +199,10 @@ public class CacheServiceImpl implements CacheService {
 
 
 
-
-
-
 	/**
 	 * 以下为降级方法
 	 */
-	public boolean saveProductInfo2ReidsCacheFallback(ProductInfo productInfo) {
+	public boolean saveProductInfo2RedisCacheFallback(ProductInfo productInfo) {
 		return false;
 	}
 
@@ -214,7 +211,7 @@ public class CacheServiceImpl implements CacheService {
 		return null;
 	}
 
-	public boolean saveShopInfo2ReidsCacheFallback(ShopInfo shopInfo) {
+	public boolean saveShopInfo2RedisCacheFallback(ShopInfo shopInfo) {
 		return false;
 	}
 

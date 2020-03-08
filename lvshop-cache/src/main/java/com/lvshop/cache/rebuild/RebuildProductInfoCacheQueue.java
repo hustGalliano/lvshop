@@ -48,7 +48,7 @@ public class RebuildProductInfoCacheQueue {
 		static {
 			instance = new RebuildProductInfoCacheQueue();
 		}
-		public static RebuildProductInfoCacheQueue getInstance() {
+		static RebuildProductInfoCacheQueue getInstance() {
 			return instance;
 		}
 	}

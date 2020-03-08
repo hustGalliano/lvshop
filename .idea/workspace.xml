@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87f9fe07-7287-4261-a2d6-25e1430fdfbf" name="Default Changelist" comment="" />
+    <list default="true" id="87f9fe07-7287-4261-a2d6-25e1430fdfbf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/README.assets/热数据统计线程的流程.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationLayerNginxLuaScript/hot.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationLayerNginxLuaScript/hot.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ApplicationLayerNginxLuaScript/product.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ApplicationLayerNginxLuaScript/product.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DistributionLayerNginxLuaScript/cancel_hot.lua" beforeDir="false" afterPath="$PROJECT_DIR$/DistributionLayerNginxLuaScript/cancel_hot.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DistributionLayerNginxLuaScript/distribute.lua" beforeDir="false" afterPath="$PROJECT_DIR$/DistributionLayerNginxLuaScript/distribute.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DistributionLayerNginxLuaScript/hot.lua" beforeDir="false" afterPath="$PROJECT_DIR$/DistributionLayerNginxLuaScript/hot.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/aop/LogAspects.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/config/CacheConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/config/EhCacheConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/controller/CacheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/controller/CacheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/hystrix/command/out/GetProductInfoCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/hystrix/command/out/GetProductInfoFromReidsCacheCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/hystrix/command/out/GetShopInfoFromReidsCacheCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/hystrix/command/out/HBaseColdDataCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/hystrix/command/out/SaveProductInfo2ReidsCacheCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/hystrix/command/out/SaveShopInfo2ReidsCacheCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/kafka/KafkaConsumerOld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/kafka/KafkaMessageProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/listener/InitListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/listener/InitListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/prewarm/CachePrewarmThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/prewarm/CachePrewarmThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/rebuild/RebuildProductInfoCacheQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/rebuild/RebuildProductInfoCacheQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/service/impl/CacheServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/service/impl/CacheServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/spring/SpringContext.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/zookeeper/ZooKeeperSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-cache/src/main/java/com/lvshop/cache/zookeeper/ZooKeeperSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-storm/src/main/java/com/lvshop/storm/bolt/ProductCountBolt.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-storm/src/main/java/com/lvshop/storm/bolt/ProductCountBolt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-storm/src/main/java/com/lvshop/storm/spout/AccessLogKafkaSpout.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-storm/src/main/java/com/lvshop/storm/spout/AccessLogKafkaSpout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lvshop-storm/src/main/java/com/lvshop/storm/zk/ZooKeeperSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/lvshop-storm/src/main/java/com/lvshop/storm/zk/ZooKeeperSession.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,6 +270,7 @@
       <workItem from="1583326041028" duration="24137000" />
       <workItem from="1583513296554" duration="9812000" />
       <workItem from="1583562708666" duration="114000" />
+      <workItem from="1583658854580" duration="14069000" />
     </task>
     <servers />
   </component>
