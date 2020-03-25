@@ -91,7 +91,6 @@ public class ProductCountBolt extends BaseRichBolt {
 	private class HotProductFindThread implements Runnable {
 		private final int Threshold = 10;
 
-
 		@SuppressWarnings("deprecation")
 		public void run() {
 			// <productId, count>
